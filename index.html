@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+#fancy {
+	background-color: grey;
+}
+.heading {
+	color:white;
+}
+    </style>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>Getting Started with React</title>
+</head>
+<body>
+	<div id="react-container"></div>
+
+	<script type="text/babel">
+
+		class Hello extends React.Component {
+		render() {
+			return (
+				<div>
+					<h1>App by {this.props.firstName}</h1>
+					<p>React Version {this.props.version}</p>
+				</div>
+			)
+		}
+	}
+
+		ReactDOM.render(
+			<Hello firstName="Rachel" version={16}/>,
+			document.getElementById('react-container')
+		)
+
+	</script>
+
+</body>
+</html>
