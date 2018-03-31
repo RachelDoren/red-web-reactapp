@@ -33,7 +33,7 @@ div.resource {
     width: 150px;
     background-color: #feca65;
     margin: 2px 0;
-    position: absolute;
+    position: relative;
     cursor: -webkit-grab;
     -webkit-box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
     box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
@@ -71,6 +71,7 @@ div.resource > textarea {
 }
 
 div.board button {
+  background-color: gray;
   color: #fff;
   font-size: 14px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);

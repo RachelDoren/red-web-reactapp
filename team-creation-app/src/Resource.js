@@ -43,7 +43,7 @@ class Resource extends Component {
 	renderDisplay() {
 		return (
 				<div className="resource">
-					<p>First Resource </p>
+					<p>{this.props.children} </p>
 					<span>
 						<button onClick={this.edit} id="edit"><FaPencil /></button>
 						<button id onClick={this.remove} id="remove"><FaTrash /></button>

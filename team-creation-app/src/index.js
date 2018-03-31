@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Resource from './Resource';
+import Board from './Board';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Resource />, document.getElementById('root'));
+ReactDOM.render(<Board />, document.getElementById('root'));
 registerServiceWorker();
