@@ -10,6 +10,7 @@ class Resource extends Component {
 			editing: false
 		}
 		this.edit = this.edit.bind(this);
+		this.add = this.add.bind(this);
 		this.remove = this.remove.bind(this);
 		this.save = this.save.bind(this);
 		this.renderForm = this.renderForm.bind(this);
@@ -18,23 +19,29 @@ class Resource extends Component {
 	edit() {
 		this.setState ({
 			editing: true
-		})
+		});
+	}
+	add() {
+		this.props.onClick(console.log('adding resource'));
 	}
 	remove() {
-		alert('removing resource');
+		this.props.onRemove(this.props.index);
 	}
 
-	save() {
-		alert(this._newText.value);
+	save(e) {
+		e.preventDefault();
+		this.props.onChange(this._newText.value, this.props.index);
+		this.setState({
+			editing: false
+		})
 	}
 
 	renderForm() {
 		return (
 				<div className="resource">
-					<form>
-						<textarea ref={input => this._newText = input} name="name" defaultValue="Employee Name" />
-						<textarea name="skills" defaultValue="List Skills Here" />
-						<button onClick={this.save}> <FaFloppyO /></button>
+					<form onSubmit={this.save}>
+						<textarea rows="8" ref={input => this._newText = input} name="name" defaultValue="Employee Name              Employee Skills" />
+						<button id ="save"> <FaFloppyO /></button>
 					</form>
 				</div>
 			);

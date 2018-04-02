@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Resource from './Resource';
+import FaPlus from 'react-icons/lib/fa/plus';
 
 class Board extends Component {
 	constructor(props) {
@@ -7,34 +8,71 @@ class Board extends Component {
 		this.state = {
 			resources: [
 				{
+					id: 0,
+					resource: ["Jane Doe: ", " React,", " Node,", " Angular"]
+				},
+				{
 					id: 1,
-					resource: "Jane Doe: ",
-					skills: " Javascript, React, PHP"
+					resource: ["John Don: ", "SQL, ", "C#, ", "C++"]
 				},
 				{
 					id: 2,
-					resource: "John Don: ",
-					skills: " Wordpress, React, C#"
-				},
-				{
-					id: 3,
-					resource: "Julie Smith: ",
-					skills: " Node.js, SQL, C++, C#, Hive, Unity, Unreal"
+					resource: ["Julie Smith: ", "Unity, ", "Unreal, ", " C++"]
 				}
 
 			]
 		}
 		this.eachResource = this.eachResource.bind(this);
+		this.update = this.update.bind(this);
+		this.delete = this.delete.bind(this);
+		this.add = this.add.bind(this);
+		this.nextId = this.nextId.bind(this);
+
+	}
+
+	update(newText, i) {
+		this.setState(prevState => ({ //callback function to change state
+			resources: prevState.resources.map( 
+					resource => (resource.id !== i) ? resource : {...resource, resource: newText}
+				)
+		}));
+
+	}
+
+	delete(id) {
+		this.setState(prevState => ({
+			resources: prevState.resources.filter(resource => resource.id !== id)
+		}));
+	}
+
+	add(text) {
+		this.setState(prevState => ({
+			resources: [
+				...prevState.resources,
+				{
+					id: this.nextId,
+					resource: text
+				}
+			]
+		}))
+
+	}
+
+	nextId() {
+		this.uniqueId = this.uniqueId || 0
+		return this.uniqueId++; 
 	}
 
 	eachResource(resource, i) {
 		return (
 				<Resource key={i}
-						index={i}>
+						index={i}
+						onChange={this.update}
+						onRemove={this.delete}
+						onAdd={this.add}>
 						{resource.resource}
-						{resource.skills}
 				</Resource>
-			)
+			);
 	}
 	
 
@@ -42,6 +80,9 @@ class Board extends Component {
 		return (
 				<div className="board">
 					{this.state.resources.map(this.eachResource)}
+					<button onClick={this.add.bind(null, "Employee Name, Employee Skills")}
+						id="add">  <FaPlus /> </button>
+
 				</div>
 			);
 	};
