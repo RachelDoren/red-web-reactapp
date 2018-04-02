@@ -30,6 +30,13 @@ class Board extends Component {
 
 	}
 
+	conponentWillMount() {
+		var self = this
+		if(this.props.count) {
+			fetch(`https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`)
+		}
+	}
+
 	update(newText, i) {
 		this.setState(prevState => ({ //callback function to change state
 			resources: prevState.resources.map( 
@@ -80,7 +87,7 @@ class Board extends Component {
 		return (
 				<div className="board">
 					{this.state.resources.map(this.eachResource)}
-					<button onClick={this.add.bind(null, "Employee Name, Employee Skills")}
+					<button onClick={this.add.bind(null, "Employee Name,   Skills")}
 						id="add">  <FaPlus /> </button>
 
 				</div>
