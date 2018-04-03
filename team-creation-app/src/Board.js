@@ -33,7 +33,7 @@ class Board extends Component {
 	conponentWillMount() {
 		var self = this
 		if(this.props.count) {
-			fetch(`https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`)
+			fetch(`https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`).then(response => response.json()).then(json => json[0].split(". ").forEach(sentence => self.add(sentence.substring(0,25))))
 		}
 	}
 

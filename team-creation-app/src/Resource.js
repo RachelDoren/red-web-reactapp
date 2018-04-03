@@ -40,7 +40,7 @@ class Resource extends Component {
 		return (
 				<div className="resource">
 					<form onSubmit={this.save}>
-						<textarea rows="8" ref={input => this._newText = input} name="name" defaultValue="Employee Name              Employee Skills" />
+						<textarea rows="8" ref={input => this._newText = input} name="name" defaultValue="Employee Name,                           Employee Skills" />
 						<button id ="save"> <FaFloppyO /></button>
 					</form>
 				</div>
