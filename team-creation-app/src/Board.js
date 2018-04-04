@@ -6,21 +6,7 @@ class Board extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			resources: [
-				{
-					id: 0,
-					resource: ["Jane Doe: ", " React,", " Node,", " Angular"]
-				},
-				{
-					id: 1,
-					resource: ["John Don: ", "SQL, ", "C#, ", "C++"]
-				},
-				{
-					id: 2,
-					resource: ["Julie Smith: ", "Unity, ", "Unreal, ", " C++"]
-				}
-
-			]
+			resources: []
 		}
 		this.eachResource = this.eachResource.bind(this);
 		this.update = this.update.bind(this);
