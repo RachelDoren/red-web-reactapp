@@ -8,13 +8,36 @@ class Board extends Component {
 		this.state = {
 			resources: []
 		}
+		this.add = this.add.bind(this);
 		this.eachResource = this.eachResource.bind(this);
 		this.update = this.update.bind(this);
 		this.delete = this.delete.bind(this);
-		this.add = this.add.bind(this);
 		this.nextId = this.nextId.bind(this);
 
 	}
+
+	componentWillMount() { //only lifecycle hook called on server rndering
+		var self = this;
+		if(this.props.count) {
+			fetch(`https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`)
+				.then(response => response.json())
+				.then(json => json[0].split('. ').forEach(sentence => self.add(sentence.substring(0,25))))
+		}
+	}
+
+	add(text) {
+		this.setState(prevState => ({
+			resources: [
+				...prevState.resources,
+				{
+					id: this.nextId,
+					resource: text
+				}
+			]
+		}));
+
+	}
+
 
 	conponentWillMount() {
 		var self = this
@@ -36,19 +59,6 @@ class Board extends Component {
 		this.setState(prevState => ({
 			resources: prevState.resources.filter(resource => resource.id !== id)
 		}));
-	}
-
-	add(text) {
-		this.setState(prevState => ({
-			resources: [
-				...prevState.resources,
-				{
-					id: this.nextId,
-					resource: text
-				}
-			]
-		}))
-
 	}
 
 	nextId() {
