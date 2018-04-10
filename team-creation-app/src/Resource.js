@@ -62,7 +62,7 @@ class Resource extends Component {
         this.props.onChange(this._newText.value, this.props.index);
         this.setState({
             editing: false
-        })
+        });
     }
 
     renderForm() {
