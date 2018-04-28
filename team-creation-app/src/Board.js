@@ -30,12 +30,17 @@ class Board extends Component {
 			resources: [
 				...prevState.resources,
 				{
-					id: this.nextId,
+					id: this.nextId(),
 					resource: text
 				}
 			]
 		}));
 
+	}
+
+	nextId() {
+		this.uniqueId = this.uniqueId || 0
+		return this.uniqueId++
 	}
 
 

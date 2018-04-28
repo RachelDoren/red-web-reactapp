@@ -22,7 +22,8 @@ class Resource extends Component {
         this.style = {
                 right: this.randomBetween(0,window.innerWidth-150, 'px'),
                 top: this.randomBetween(0,window.innerHeight-150, 'px'),
-                transform: `rotate(${this.randomBetween(-5, 5, 'deg')})`
+                transform: `rotate(${this.randomBetween(-5, 5, 'deg')})`,
+                zIndex:10
         }
     }
 
