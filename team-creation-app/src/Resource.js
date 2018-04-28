@@ -20,14 +20,14 @@ class Resource extends Component {
 
     componentWillMount() {
         this.style = {
-            right: this.randomBetween(0,window.innerWidth-150, 'px'),
-            top: this.randomBetween(0,window.innerHeight-150, 'px'),
-            transform: `rotate(${this.randomBetween(-25, 25, 'deg')})`
+                right: this.randomBetween(0,window.innerWidth-150, 'px'),
+                top: this.randomBetween(0,window.innerHeight-150, 'px'),
+                transform: `rotate(${this.randomBetween(-5, 5, 'deg')})`
         }
     }
 
     randomBetween(x,y,s) {
-        return x + Math.ceil(Math.random() * (y-x) + s)
+        return x + Math.ceil(Math.random() * (y-x)) + s
     }
 
     componentDidUpdate() {
@@ -46,7 +46,7 @@ class Resource extends Component {
     }
 
     edit() {
-        this.setState ({
+        this.setState({
             editing: true
         });
     }
@@ -62,30 +62,30 @@ class Resource extends Component {
         this.props.onChange(this._newText.value, this.props.index);
         this.setState({
             editing: false
-        });
+        })
     }
 
     renderForm() {
         return (
-                <div className="resource" style={this.style}>
-                    <form onSubmit={this.save}>
-                        <textarea rows="8" ref={input => this._newText = input} name="name" defaultValue="Employee Name,                           Employee Skills" />
-                        <button id ="save"> <FaFloppyO /></button>
-                    </form>
-                </div>
-            );
+            <div className="resource" style={this.style}>
+                <form onSubmit={this.save}>
+                    <textarea rows="8" ref={input => this._newText = input} name="name" defaultValue="Employee Name,                           Employee Skills" />
+                    <button id ="save"> <FaFloppyO /></button>
+                </form>
+            </div>
+        );
     }
 
     renderDisplay() {
         return (
-                <div className="resource" style={this.style}>
-                    <p>{this.props.children} </p>
-                    <span>
-                        <button onClick={this.edit} id="edit"><FaPencil /></button>
-                        <button id onClick={this.remove} id="remove"><FaTrash /></button>
-                    </span>
-                </div>
-            );
+            <div className="resource" style={this.style}>
+                <p>{this.props.children} </p>
+                <span>
+                    <button onClick={this.edit} id="edit"><FaPencil /></button>
+                    <button id onClick={this.remove} id="remove"><FaTrash /></button>
+                </span>
+            </div>
+        );
     }
 
     render() {
