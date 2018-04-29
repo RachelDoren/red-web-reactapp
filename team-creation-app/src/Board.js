@@ -35,7 +35,6 @@ class Board extends Component {
 				}
 			]
 		}));
-
 	}
 
 	nextId() {
