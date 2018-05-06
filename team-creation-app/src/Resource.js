@@ -43,7 +43,7 @@ class Resource extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         return (
             this.props.children !== nextProps.children || this.state !== nextState
-        )
+        );
     }
 
     edit() {
@@ -51,9 +51,11 @@ class Resource extends Component {
             editing: true
         });
     }
+
     add() {
         this.props.onClick(console.log('adding resource'));
     }
+
     remove() {
         this.props.onRemove(this.props.index);
     }
@@ -63,7 +65,7 @@ class Resource extends Component {
         this.props.onChange(this._newText.value, this.props.index);
         this.setState({
             editing: false
-        })
+        });
     }
 
     renderForm() {

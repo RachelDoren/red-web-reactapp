@@ -13,7 +13,6 @@ class Board extends Component {
 		this.update = this.update.bind(this);
 		this.delete = this.delete.bind(this);
 		this.nextId = this.nextId.bind(this);
-
 	}
 
 	componentWillMount() { //only lifecycle hook called on server rndering
