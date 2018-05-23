@@ -55,7 +55,6 @@ class Board extends Component {
 					resource => (resource.id !== i) ? resource : {...resource, resource: newText}
 				)
 		}));
-
 	}
 
 	delete(id) {
